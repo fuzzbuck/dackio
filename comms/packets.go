@@ -1,5 +1,7 @@
 package comms
 
+import "dackio/game"
+
 const (
 	// CLIENT -> SERVER
 	HI = iota
@@ -23,19 +25,9 @@ var PacketHandler = map[byte]func(ws *Client){
 	},
 }
 
-type Vector2 struct {
-	x			int
-	y			int
-}
-
-type Block struct {
-	Position	Vector2
-	BlockId		byte
-}
-
 type Player struct {
 	Username	string
-	Position	Vector2
+	Position	game.Vector2
 }
 
 type PlayerDataChunk struct {
@@ -44,10 +36,10 @@ type PlayerDataChunk struct {
 }
 
 type WorldInfo struct {
-	Size		Vector2
+	Size		game.Vector2
 }
 
 type WorldChunk struct {
 	ChunkSize	int
-	Blocks		[]Block
+	Blocks		[]game.Block
 }

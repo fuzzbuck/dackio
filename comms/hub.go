@@ -1,7 +1,5 @@
 package comms
 
-import "bytes"
-
 var GlobalHub *Hub
 
 type ClientBroadcast struct {
@@ -64,7 +62,6 @@ func (h *Hub) run() {
 				close(client.send)
 			}
 		case message := <-h.broadcast:
-			handleMessage(message.Stream)
 			h.SendToAll(message.Stream)
 		}
 	}
